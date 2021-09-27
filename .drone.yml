@@ -4,6 +4,10 @@ type: docker
 name: default
 
 steps:
+  - name: yamllint
+    image: sdesbure/yamllint:latest
+    commands:
+      - yamllint .drone.yml
   - name: go-test
     image: golang:1.17
     commands:

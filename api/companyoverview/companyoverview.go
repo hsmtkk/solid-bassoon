@@ -27,7 +27,7 @@ func New(apiKey string, client http.Getter) Querier {
 }
 
 func (q *querierImpl) Query(symbol string) (Response, error) {
-	query := map[string]string{"function": "OVERVIEW", symbol: symbol, "apiKey": q.apiKey}
+	query := map[string]string{"function": "OVERVIEW", "symbol": symbol, "apikey": q.apiKey}
 	jsonBytes, err := q.getter.Get(query)
 	if err != nil {
 		return Response{}, err
