@@ -1,0 +1,15 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: go-test
+    image: golang:1.17
+    commands:
+      - go test
+  - name: go-static-check
+    image: golang:1.17
+    commands:
+      - go install honnef.co/go/tools/cmd/staticcheck@latest
+      - staticcheck ./...
